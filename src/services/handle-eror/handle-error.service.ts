@@ -10,7 +10,7 @@ export class HandleErrorService {
     private snackBar: MatSnackBar
   ) { }
 
-  showError(message: string, action: string = 'بستن', duration: number = 5000): void {
+  showError(message: string, action: string = 'close', duration: number = 5000): void {
     this.snackBar.open(message, action, {
       duration: duration,
       panelClass: ['error-snackbar'],
@@ -18,7 +18,7 @@ export class HandleErrorService {
     });
   }
 
-  showSuccess(message: string, action: string = 'بستن', duration: number = 3000): void {
+  showSuccess(message: string, action: string = 'close', duration: number = 3000): void {
     this.snackBar.open(message, action, {
       duration: duration,
       panelClass: ['success-snackbar'],

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { XMLParser } from "fast-xml-parser";
+import { HandleErrorService } from '../../services/handle-eror/handle-error.service';
 
 @Component({
   selector: 'app-get-input',
@@ -13,6 +14,9 @@ export class GetInputComponent {
   reader = new FileReader();
   parser = new XMLParser();
   fileResult: any;
+
+
+  constructor(private handleError: HandleErrorService) { }
 
   formHandle(event: Event): void {
     event.preventDefault();
@@ -34,9 +38,11 @@ export class GetInputComponent {
   create(): void {
     if (this.fileResult) {
       this.fileOutput.emit(this.fileResult);
+      this.handleError.showSuccess("Success")
     }
     else {
-      
+      this.handleError.showError("Input File Is Empty !")
+
     }
   }
 }
