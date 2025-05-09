@@ -1,4 +1,5 @@
 <div class="all">
 
-  <app-get-input></app-get-input>
+  <app-get-input (fileOutput)="getFile($event)"></app-get-input>
+  <app-template [fileInput]="file"></app-template>
 </div>
