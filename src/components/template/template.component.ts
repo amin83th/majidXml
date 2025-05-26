@@ -20,4 +20,22 @@ export class TemplateComponent {
     this.finallyFile = this.fileInput;
   }
 
+  isObject(value: any): boolean {
+    return value !== null && typeof value === 'object' && !Array.isArray(value);
+  }
+
+  isArray(value: any): boolean {
+    return Array.isArray(value);
+  }
+
+  objectKeys(obj: any): string[] {
+    debugger
+
+    const ali = Object.keys(obj);
+
+    return ali;
+
+  }
+
+
 }
