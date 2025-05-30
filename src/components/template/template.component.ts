@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-template',
@@ -36,6 +36,8 @@ export class TemplateComponent {
     return ali;
 
   }
+
+
 
 
 }
