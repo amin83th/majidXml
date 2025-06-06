@@ -1,23 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-template',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule, TemplateComponent],
   templateUrl: './template.component.html',
-  styleUrl: './template.component.css'
+  styleUrls: ['./template.component.css']
 })
 export class TemplateComponent {
-
   @Input() fileInput: any;
 
-
-  finallyFile: any;
-
-  ngOnChanges() {
-    console.log('فایل دریافت شد:', this.fileInput);
-
-    this.finallyFile = this.fileInput;
+  objectKeys(obj: any): string[] {
+    return obj ? Object.keys(obj) : [];
   }
 
   isObject(value: any): boolean {
@@ -27,17 +23,4 @@ export class TemplateComponent {
   isArray(value: any): boolean {
     return Array.isArray(value);
   }
-
-  objectKeys(obj: any): string[] {
-    debugger
-
-    const ali = Object.keys(obj);
-
-    return ali;
-
-  }
-
-
-
-
 }

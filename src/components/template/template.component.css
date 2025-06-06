@@ -1,0 +1,28 @@
+#array{
+    padding: 1rem;
+}
+#array>div{
+    padding: .5rem;
+}
+#array .cart{
+    padding: 1rem;
+    border: 1px solid #333;
+    border-radius: 7px;
+}
+#array button{
+    padding: 7px 13px;
+    border: 1px solid #30484a;
+    background-color: rgb(128, 128, 255);
+    border-radius: 3px;
+    color: white;
+    margin: 1rem;
+}
+#object {
+   text-align: center;   
+}
+#object input{  
+    width: 80%;
+    padding: 1rem;
+    border-radius: 3px;
+    border: 1px solid #30484a;
+}

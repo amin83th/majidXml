@@ -1,50 +1,34 @@
+<div *ngIf="fileInput">
 
-<table *ngIf="isObject(finallyFile)" border="1" style="border-collapse: collapse; margin: 8px 0;">
-    <thead>
-        <tr>
-            <th *ngFor="let key of objectKeys(finallyFile)">
-                {{ key }}
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td *ngFor="let key of objectKeys(finallyFile)">
-                <app-template [fileInput]="finallyFile[key]"></app-template>
-            </td>
-        </tr>
-    </tbody>
-</table>
+    <div *ngIf="isArray(fileInput)" id="array">
+        <div *ngFor="let item of fileInput; let i = index">
+            <label>Index {{ i }}</label>
 
-<table *ngIf="isArray(finallyFile)" border="1" style="border-collapse: collapse; margin: 8px 0;">
-    <tbody>
-        <tr *ngFor="let item of finallyFile">
-            <td>
+            <div *ngIf="isObject(item) || isArray(item)" class="cart">
                 <app-template [fileInput]="item"></app-template>
-            </td>
-        </tr>
-    </tbody>
-</table>
+            </div>
+            
+            <div *ngIf="!isObject(item) && !isArray(item)" class="input">
+                <input [(ngModel)]="fileInput[i]" />
+            </div>
+            
+            <button [disabled]="">Save</button>
+            
+        </div>
+    </div>
 
+    <div *ngIf="isObject(fileInput)" id="object">
+        <ng-container *ngFor="let key of objectKeys(fileInput)">
+            <label>{{ key }}</label>
 
-<span *ngIf="!isObject(finallyFile) && !isArray(finallyFile)">
-    {{ finallyFile }}
-</span>
+            <div *ngIf="isObject(fileInput[key]) || isArray(fileInput[key])">
+                <app-template [fileInput]="fileInput[key]"></app-template>
+            </div>
 
-<!-- 
-<table>
-    <thead>
-        <tr>
-            <th *ngFor="let key of objectKeys(finallyFile)">
-                {{ key }}
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td *ngFor="let key of objectKeys(finallyFile)">
-                <app-template [fileInput]="finallyFile[key]"></app-template>
-            </td>
-        </tr>
-    </tbody>
-</table> -->
+            <div *ngIf="!isObject(fileInput[key]) && !isArray(fileInput[key])">
+                <input [(ngModel)]="fileInput[key]" />
+            </div>
+        </ng-container>
+    </div>
+
+</div>
